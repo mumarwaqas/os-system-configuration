@@ -22,7 +22,7 @@
 		<hr class="wp-header-end">
 		<form method="post" id="" action="<?php echo esc_html( admin_url( 'options.php' ) ); ?>">
 		<?php settings_fields( 'sc-system-configuration-group' ); ?>
-		<?php do_settings_sections( 'sc-system-configuration-group' ); ?>
+		<?php do_settings_sections( 'sc-system-configuration-group' ); ?> 
 		<h2 class="title">Website URLs</h2>
 		<table class="form-table" role="presentation">
 			<tbody>
