@@ -88,7 +88,9 @@ class SC
 		$this->define( 'SC_FILE_MANAGER_PATH', plugin_dir_path(__FILE__));
 
 		// Include utility functions.
-		//include_once( SC_PATH . 'file.php');
+		include_once( SC_PATH . 'shortcode.php');
+		include_once( SC_PATH . 'widget.php');
+
 		add_action( 'admin_menu', array($this, 'sc_admin_menu'), 5 );
 		add_action( 'admin_enqueue_scripts', array($this, 'sc_admin_things'), 10 );
 
@@ -105,7 +107,8 @@ class SC
 	/* Admin  Things */
 	function sc_admin_things()
 	{
-		wp_enqueue_style('sc-styles', plugins_url('assets/css/styles.css', __FILE__ ));
+		wp_enqueue_script( 'sc-widget-script',	plugins_url('assets/js/widget-script.js', __FILE__), array('jquery'), 1.0, true );
+		wp_enqueue_style ( 'sc-styles', 		plugins_url('assets/css/styles.css', __FILE__ ));
 	}
 
 
@@ -210,30 +213,4 @@ function sc() {
 // Instantiate.
 sc();
 
-
-
-
-add_filter( 'wp_nav_menu', 'do_shortcode' );
-add_filter( 'nav_menu_link_attributes', 'sc_login', 10, 4 ); 
-add_filter( 'nav_menu_link_attributes', 'sc_signup', 10, 4 ); 
-// Add shortcode function on "init"
-add_shortcode( 'LOGIN', 'sc_login' );
-add_shortcode( 'SIGNUP', 'sc_signup' );
-
-function sc_login($atts, $content = "") 
-{
-	if ( false !== strpos( $atts[ 'href' ], '[LOGIN]' ) ) {
-		// Simply overwrite the url with a set value
-		$atts[ 'href' ] = get_option('login');
-	}
-	return $atts;
-}
-function sc_signup($atts, $content = "") 
-{
-	if ( false !== strpos( $atts[ 'href' ], '[SIGNUP]' ) ) {
-		// Simply overwrite the url with a set value
-		$atts[ 'href' ] = get_option('signup');
-	}
-	return $atts;
-}
 
