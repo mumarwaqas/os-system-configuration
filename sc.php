@@ -128,10 +128,10 @@ class SC
 	{
 		if (is_admin())
 		{	// admin actions
-			add_menu_page('System Configuration', 'System Configuration', 'manage_options', 'system-configuration', array($this, 'sc_admin_page_contents'), SC_ICON, 3);
+			add_menu_page('OS Setting', 'OS Setting', 'manage_options', 'os-setting', array($this, 'sc_admin_page_contents'), SC_ICON, 3);
 			//add_menu_page    ( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null );
 			//add_submenu_page('system-configuration', 'Configuration', 'Configuration', 'manage_options', 'configuration', array($this, 'sc_admin_page_contents'));
-			add_submenu_page('system-configuration', 'Replace URLs', 'Replace URLs', 'manage_options', 'replace-urls', array($this, 'sc_admin_page_replace_urls'));
+			add_submenu_page('os-setting', 'Replace URLs', 'Replace URLs', 'manage_options', 'replace-urls', array($this, 'sc_admin_page_replace_urls'));
 		}
 		else
 		{
